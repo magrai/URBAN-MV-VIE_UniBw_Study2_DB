@@ -4,7 +4,7 @@ CREATE OR REPLACE VIEW v_can_wrange_gps_sx_helper_6final AS
 
 SELECT 
 rownr,
-subid,
+v_can_wrange_gps_sx_helper_5correction.subid,
 time_s,
 dist_m,
 gps_lat,
@@ -22,15 +22,23 @@ gps_sx_reached_id_rev,
 runid,
 mdir,
 mid,
-mstart
+mstart,
+v_condfinder.cond,
+v_condfinder.runs50_first,
+v_condfinder.runs70_first,
+v_condfinder.runs50_t1_runid,
+v_condfinder.runs50_t2_runid,
+v_condfinder.runs70_t1_runid,
+v_condfinder.runs70_t2_runid
 
 FROM
 v_can_wrange_gps_sx_helper_5correction
+INNER JOIN "public".v_condfinder ON "public".v_can_wrange_gps_sx_helper_5correction.subid = "public".v_condfinder.subid
 
 WHERE 
-gps_sx_reached_id_rev <= 30 OR
-(subid = 38)
+(gps_sx_reached_id_rev <= 30 OR
+(v_can_wrange_gps_sx_helper_5correction.subid = 38))
 
 ORDER BY
-subid,
+v_can_wrange_gps_sx_helper_5correction.subid,
 time_s
