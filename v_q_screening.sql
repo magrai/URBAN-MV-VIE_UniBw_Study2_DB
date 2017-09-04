@@ -2,7 +2,7 @@ DROP VIEW IF EXISTS v_q_screening CASCADE;
 CREATE OR REPLACE VIEW v_q_screening AS
 
 SELECT
-"id"::NUMERIC as candid,
+"id"::NUMERIC as applicant_id,
 sex,
 age::NUMERIC,
 drivexp,
@@ -90,4 +90,4 @@ FROM
 
 
 ORDER BY
-candid
+applicant_id

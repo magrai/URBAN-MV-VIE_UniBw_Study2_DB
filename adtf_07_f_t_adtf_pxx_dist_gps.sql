@@ -1,6 +1,6 @@
 -- Compute distance between GPS data and GPS reference points
 --------------------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION f_t_adtf_dist_gps_pxx (pos_id INT DEFAULT NULL) 
+CREATE OR REPLACE FUNCTION f_t_adtf_pxx_dist_gps (pos_id INT DEFAULT NULL) 
 RETURNS VOID
 LANGUAGE plpgsql AS $$
 --------------------------------------------------------------------------------
@@ -12,21 +12,22 @@ RAISE INFO 'Processing f_t_adtf_dist_gps_pxx';
 RAISE INFO 'GPS reference position %', pos_id;
 RAISE INFO '==================================================';
 --------------------------------------------------------------------------------
-EXECUTE '
+EXECUTE 
+'
 --------------------------------------------------------------------------------
-DROP TABLE IF EXISTS t_adtf_dist_gps_p' || pos_id_txt || ' CASCADE;
-CREATE TABLE t_adtf_dist_gps_p' || pos_id_txt || ' AS
+DROP TABLE IF EXISTS t_adtf_p' || pos_id_txt || 'dist_gps CASCADE;
+CREATE TABLE t_adtf_p' || pos_id_txt || 'dist_gps AS
 --------------------------------------------------------------------------------
 SELECT
 t_adtf_formatted.row_nr,
 t_adtf_formatted.subject_id,
 t_adtf_formatted.time_s,
-t_adtf_formatted.lat,
-t_adtf_formatted.lon,
+t_adtf_formatted.gps_lat,
+t_adtf_formatted.gps_lon,
 
-ST_distance_sphere(
-	st_point(t_adtf_formatted.lon, t_adtf_formatted.lat), 
-	st_point(gps_p' || pos_id_txt || '.lon, gps_p' || pos_id_txt || '.lat)) 
+ST_DistanceSphere(
+	st_point(t_adtf_formatted.gps_lon, t_adtf_formatted.gps_lat), 
+	st_point(gps_p' || pos_id_txt || '.gps_lon, gps_p' || pos_id_txt || '.gps_lat)) 
 AS p' || pos_id_txt || '_gps_dist_m
 
 FROM
@@ -36,7 +37,7 @@ t_adtf_formatted,
 	*
 
 	FROM 
-	t_gps_positions 
+	t_gps_reference_positions 
 	
 	WHERE 
 	position_id = ' || pos_id || '

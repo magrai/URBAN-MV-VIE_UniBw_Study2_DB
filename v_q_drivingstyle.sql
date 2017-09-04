@@ -1,21 +1,21 @@
-DROP VIEW IF EXISTS v_q_drivingstyle CASCADE;
-CREATE VIEW v_q_drivingstyle AS
+DROP TABLE IF EXISTS t_q_driving_style CASCADE;
+CREATE TABLE t_q_driving_style AS
 
 SELECT
-"public".t_subid2candid.subid,
-"public".v_q_screening.ds01,
-"public".v_q_screening.ds02,
-"public".v_q_screening.ds03,
-"public".v_q_screening.ds04,
-"public".v_q_screening.ds05,
-"public".v_q_screening.ds06,
-"public".v_q_screening.ds07,
-"public".v_q_screening.ds08,
-"public".v_q_screening.ds09,
-"public".v_q_screening.ds10,
-"public".v_q_screening.ds11
+t_id_subject2applicant.subject_id,
+v_q_screening.ds01,
+v_q_screening.ds02,
+v_q_screening.ds03,
+v_q_screening.ds04,
+v_q_screening.ds05,
+v_q_screening.ds06,
+v_q_screening.ds07,
+v_q_screening.ds08,
+v_q_screening.ds09,
+v_q_screening.ds10,
+v_q_screening.ds11
 FROM
-"public".v_q_screening
-INNER JOIN "public".t_subid2candid ON "public".t_subid2candid.candid = "public".v_q_screening.candid
+v_q_screening
+INNER JOIN t_id_subject2applicant.subject_id ON v_q_screening.applicant_id = t_id_subject2applicant.subject_id
 ORDER BY
-"public".t_subid2candid.subid
+t_id_subject2applicant.subject_id

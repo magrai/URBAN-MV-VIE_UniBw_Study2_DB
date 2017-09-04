@@ -18,6 +18,7 @@ DROP TABLE IF EXISTS t_adtf_full_p' ||  pos_id_txt || '_dist_s_rnd1 CASCADE;
 CREATE TABLE t_adtf_full_p' ||  pos_id_txt || '_dist_s_rnd1 AS
 --------------------------------------------------------------------------------
 SELECT
+t_adtf_dist_p'|| pos_id_txt ||'_dist_s_rnd1.row_nr,
 t_adtf_dist_p'|| pos_id_txt ||'_dist_s_rnd1.subject_id,
 t_adtf_dist_p'|| pos_id_txt ||'_dist_s_rnd1.round_id,
 t_adtf_rounds.round_txt,
@@ -29,18 +30,18 @@ t_adtf_formatted.time_s,
 t_adtf_dist_p'|| pos_id_txt ||'_dist_s_rnd1.p'|| pos_id_txt ||'_dist_s_rnd1,
 t_adtf_dist_p'|| pos_id_txt ||'_dist_s_rnd1.p'|| pos_id_txt ||'_dist_m,
 
-t_adtf_formatted.lat,
-t_adtf_formatted.lon,
+t_adtf_formatted.gps_lat,
+t_adtf_formatted.gps_lon,
 
 t_adtf_formatted.speed_kmh,
-t_adtf_formatted.acclat_ms2,
-t_adtf_formatted.acclon_ms2,
-t_adtf_formatted.yawrate_degs,
-t_adtf_formatted.brakepress_bar,
-t_adtf_formatted.brakepress_status,
-t_adtf_formatted.steerangle_deg,
-t_adtf_formatted.steerangle_speed,
-t_adtf_formatted.accpedalpos_perc,
+t_adtf_formatted.acc_lat_ms2,
+t_adtf_formatted.acc_lon_ms2,
+t_adtf_formatted.yaw_rate_degs,
+t_adtf_formatted.brake_status,
+t_adtf_formatted.brake_press_bar,
+t_adtf_formatted.steer_angle_deg,
+t_adtf_formatted.steer_angle_speed_degs,
+t_adtf_formatted.acc_pedal_pos_perc,
 t_adtf_formatted.ind
 
 FROM

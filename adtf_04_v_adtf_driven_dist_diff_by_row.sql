@@ -1,5 +1,5 @@
-DROP VIEW IF EXISTS v_adtf_dist_diff CASCADE;
-CREATE VIEW v_adtf_dist_diff AS
+DROP VIEW IF EXISTS v_adtf_driven_distance_diff_by_row CASCADE;
+CREATE VIEW v_adtf_driven_distance_diff_by_row AS
 
 SELECT 
 t_adtf_formatted.row_nr,
