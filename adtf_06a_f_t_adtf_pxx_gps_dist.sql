@@ -1,6 +1,6 @@
 -- Compute distance between GPS data and GPS reference points
 --------------------------------------------------------------------------------
-CREATE OR REPLACE FUNCTION f_t_adtf_pxx_dist_gps (pos_id INT DEFAULT NULL) 
+CREATE OR REPLACE FUNCTION f_t_adtf_pxx_gps_dist (pos_id INT DEFAULT NULL) 
 RETURNS VOID
 LANGUAGE plpgsql AS $$
 --------------------------------------------------------------------------------
@@ -8,15 +8,15 @@ DECLARE pos_id_txt TEXT = LPAD(pos_id::text, 2, '0');
 --------------------------------------------------------------------------------
 BEGIN
 RAISE INFO '==================================================';
-RAISE INFO 'Processing f_t_adtf_dist_gps_pxx';
+RAISE INFO 'Processing f_t_adtf_pxx_gps_dist';
 RAISE INFO 'GPS reference position %', pos_id;
 RAISE INFO '==================================================';
 --------------------------------------------------------------------------------
 EXECUTE 
 '
 --------------------------------------------------------------------------------
-DROP TABLE IF EXISTS t_adtf_p' || pos_id_txt || 'dist_gps CASCADE;
-CREATE TABLE t_adtf_p' || pos_id_txt || 'dist_gps AS
+DROP TABLE IF EXISTS t_adtf_p' || pos_id_txt || '_gps_dist CASCADE;
+CREATE TABLE t_adtf_p' || pos_id_txt || '_gps_dist AS
 --------------------------------------------------------------------------------
 SELECT
 t_adtf_formatted.row_nr,

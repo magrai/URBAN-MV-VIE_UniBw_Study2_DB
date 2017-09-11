@@ -10,7 +10,7 @@ v_adtf_union.subject_id::NUMERIC AS subject_id,
 --------------------------------------------------------------------------------
 -- Vehicle data
 v_adtf_union."Time"										::NUMERIC AS time_s, 
-v_adtf_union."ESP_v_Signal"						::NUMERIC AS speed_kmh, 
+v_adtf_union."ESP_v_Signal"						::NUMERIC AS speed_kmh,v_adtf_union."ESP_v_Signal" 					::NUMERIC / 3.6 AS speed_ms,
 v_adtf_union."ESP_Querbeschleunigung"	::NUMERIC * 9.81 AS acc_lat_ms2, 
 v_adtf_union."ESP_Laengsbeschl"				::NUMERIC AS acc_lon_ms2,v_adtf_union."OBD_Abs_Pedal_Pos"			::NUMERIC AS acc_pedal_pos_perc, 
 v_adtf_union."ESP_Status_Bremsdruck"	::NUMERIC AS brake_status, 
