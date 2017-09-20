@@ -35,7 +35,6 @@ t_adtf_formatted.gps_lat,
 t_adtf_formatted.gps_lon,
 
 t_adtf_formatted.speed_kmh,
-t_adtf_formatted.speed_ms,
 t_adtf_formatted.acc_lat_ms2,
 t_adtf_formatted.acc_lon_ms2,
 t_adtf_formatted.yaw_rate_degs,

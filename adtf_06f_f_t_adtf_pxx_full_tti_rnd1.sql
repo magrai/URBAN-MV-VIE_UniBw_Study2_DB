@@ -18,7 +18,7 @@ DROP TABLE IF EXISTS t_adtf_p' ||  pos_id_txt || '_full_tti_rnd1 CASCADE;
 CREATE TABLE t_adtf_p' ||  pos_id_txt || '_full_tti_rnd1 AS
 --------------------------------------------------------------------------------
 SELECT
-t_adtf_p'|| pos_id_txt ||'_am_tti_rnd1.row_nr,
+--t_adtf_p'|| pos_id_txt ||'_am_tti_rnd1.row_nr,
 t_adtf_p'|| pos_id_txt ||'_am_tti_rnd1.subject_id,
 t_adtf_p'|| pos_id_txt ||'_am_tti_rnd1.round_id,
 t_adtf_rounds_by_row.round_txt,
@@ -34,7 +34,6 @@ t_adtf_formatted.gps_lat,
 t_adtf_formatted.gps_lon,
 
 t_adtf_formatted.speed_kmh,
-t_adtf_formatted.speed_ms,
 t_adtf_formatted.acc_lat_ms2,
 t_adtf_formatted.acc_lon_ms2,
 t_adtf_formatted.yaw_rate_degs,
