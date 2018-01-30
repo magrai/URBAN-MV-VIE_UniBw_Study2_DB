@@ -11,7 +11,7 @@ position_ids INT[];
 BEGIN
 --------------------------------------------------------------------------------
 SELECT 
-	DISTINCT ARRAY_AGG(position_id ORDER BY position_id) 
+	ARRAY_AGG(DISTINCT position_id ORDER BY position_id) 
 	FROM t_gps_reference_positions 
 	INTO position_ids;
 --------------------------------------------------------------------------------

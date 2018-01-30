@@ -31,8 +31,8 @@ CASE
 --------------------------------------------------------------------------------
 CASE 
 	WHEN 
-		(t_adtf_rounds_summary.round_id = runs50_t1_runid OR 
-		t_adtf_rounds_summary.round_id = runs50_t2_runid) AND
+		(t_adtf_rounds_summary.round_id = trip_id_t1_50_kmh OR 
+		t_adtf_rounds_summary.round_id = trip_id_t2_50_kmh) AND
 		t_adtf_rounds_summary.round_id <> 0
 	THEN 
 		50 
@@ -53,8 +53,8 @@ LEFT JOIN
 		t_adtf_formatted.row_nr     >= t_adtf_rounds_summary.row_nr_round_start AND
 		t_adtf_formatted.row_nr     <= t_adtf_rounds_summary.row_nr_round_end
 LEFT JOIN
-	v_condfinder ON 
-		t_adtf_rounds_summary.subject_id = v_condfinder.subject_id
+	t_experimental_conditions_speed_order ON 
+		t_adtf_rounds_summary.subject_id = t_experimental_conditions_speed_order.subject_id
 --------------------------------------------------------------------------------
 WHERE 
 round_id IS NOT NULL
